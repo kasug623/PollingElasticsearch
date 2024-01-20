@@ -1,0 +1,7 @@
+{
+  "name": "com.kasug623.polling_elasticsearch",
+  "version": "0.1.0",
+  "displayName": "PollingElasticsearch",
+  "description": "This is a package for polling Elasticsearch from Unity.",
+  "unity": "2022.3"
+}
