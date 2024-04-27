@@ -89,9 +89,9 @@ namespace kasug623.Elasticsearch.Polling
                 }
                 catch (Exception e)
                 {
-#if APPLICATION_DEBUG
+#if POLLING_ELASTICSEARCH_DEBUG
                     // when timeout
-                    Debug.LogError(e);
+                    Debug.LogWarning(e);
 #endif
                     return;
                 }
@@ -104,7 +104,7 @@ namespace kasug623.Elasticsearch.Polling
 
                 await UniTask.RunOnThreadPool(() =>
                 {
-#if APPLICATION_DEBUG
+#if POLLING_ELASTICSEARCH_DEBUG
                     Profiler.BeginThreadProfiling("MyWebRequest", "DataConvert");
 #endif
                     try
@@ -123,11 +123,14 @@ namespace kasug623.Elasticsearch.Polling
 
                     catch
                     {
-#if APPLICATION_DEBUG
-                        Debug.LogError("Failed to parse documents.");
+#if POLLING_ELASTICSEARCH_DEBUG
+                        Debug.LogWarning("Failed to parse documents.\n"
+                                            + "The queryDSL may not be matching the structure of the Elastic Response. "
+                                            + "The HTTP Response data is below.\n"
+                                            + "\n" + json + "\n");
 #endif
                     }
-#if APPLICATION_DEBUG
+#if POLLING_ELASTICSEARCH_DEBUG
                     Profiler.EndThreadProfiling();
 #endif
                 }
@@ -164,19 +167,19 @@ namespace kasug623.Elasticsearch.Polling
                     await UniTask.Delay(pollingIntervalMiliSec, cancellationToken: ct);
                 }
 
-#if APPLICATION_DEBUG
+#if POLLING_ELASTICSEARCH_DEBUG
                 Debug.Log("break of a polling loop");
 #endif
             }
             catch (OperationCanceledException e)
             {
-#if APPLICATION_DEBUG
-                Debug.LogError(e);
+#if POLLING_ELASTICSEARCH_DEBUG
+                Debug.LogWarning(e);
 #endif
             }
             finally
             {
-#if APPLICATION_DEBUG
+#if POLLING_ELASTICSEARCH_DEBUG
                 Debug.Log("end of a polling");
 #endif
             }
@@ -190,7 +193,7 @@ namespace kasug623.Elasticsearch.Polling
 
         public async UniTask Cancel()
         {
-#if APPLICATION_DEBUG
+#if POLLING_ELASTICSEARCH_DEBUG
             Debug.Log("Cancel of a polling is called.");
 #endif
             IsPolling = false;  // stop while loop

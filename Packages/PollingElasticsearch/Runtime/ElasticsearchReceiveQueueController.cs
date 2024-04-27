@@ -29,7 +29,7 @@ namespace kasug623.Elasticsearch.Polling
             try
             {
 
-#if APPLICATION_DEBUG
+#if POLLING_ELASTICSEARCH_DEBUG
                 if (countDocumentHitsHitsCount(document) != countDocumentHitsTotalValue(document))
                 {
                     Debug.LogWarning("Return documents are too many"
@@ -65,7 +65,7 @@ namespace kasug623.Elasticsearch.Polling
             }
             catch (Exception e)
             {
-#if APPLICATION_DEBUG
+#if POLLING_ELASTICSEARCH_DEBUG
                 Debug.LogException(e);
 #endif
             }
@@ -83,7 +83,7 @@ namespace kasug623.Elasticsearch.Polling
             }
             else
             {
-#if APPLICATION_DEBUG
+#if POLLING_ELASTICSEARCH_DEBUG
                 Debug.LogWarning("New documents from elasticsearch exceeded a size of temporary queue.\n"
                                     + "The exceeded data was ignored.");
 #endif

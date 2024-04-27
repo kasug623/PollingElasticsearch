@@ -43,5 +43,8 @@ https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask
 3. define DrawQueue
 4. new polling agent
 
+## How to debug
+- define `POLLING_ELASTICSEARCH_DEBUG` as `Scripting Define Symbols` in `Project Settings`.  
+
 ## Sample
 - https://github.com/kasug623/ElasticTextVisualize
