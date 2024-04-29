@@ -43,7 +43,7 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0",
-    "com.kasug623.polling_elasticsearch": "0.1.1"
+    "com.kasug623.polling_elasticsearch": "0.1.2"
   },
   "scopedRegistries": [
     {

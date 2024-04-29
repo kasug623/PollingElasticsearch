@@ -10,5 +10,7 @@ namespace kasug623.Elasticsearch.Polling
         }
         public abstract void CreateQueryDSL();
         public abstract void UpdateQueryDSL(ElasticsearchResponseType response);
+
+        public abstract void UpdateQueryDSL();
     }
 }
