@@ -123,6 +123,7 @@ namespace kasug623.Elasticsearch.Polling
 
                     catch
                     {
+                        elasticsearchQueryDSL.UpdateQueryDSL();
 #if POLLING_ELASTICSEARCH_DEBUG
                         Debug.LogWarning("Failed to parse documents.\n"
                                             + "The queryDSL may not be matching the structure of the Elastic Response. "
